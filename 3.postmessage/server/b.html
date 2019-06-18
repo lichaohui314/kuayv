@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    这是b页面
+    <script>
+        window.onmessage = function (e) {
+            //e.data A 页面发送过来的消息 "你不是好人"
+            console.log(e.data);
+            //拿到谁给你发的消息  给A页面回消息
+            e.source.postMessage("大师兄说的对", e.origin);
+        };
+    </script>
+</body>
+
+</html>
