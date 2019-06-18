@@ -105,13 +105,39 @@
 ```
 只适合使用在二级域名的情况
 模拟 在etc/hots 设置二级域名
+hosts文件设置
+```
+127.0.0.1       www.lch.com
+127.0.0.1       vip.lch.com
+127.0.0.1       svip.lch.com
+```
+可以通过以下3个地址进行访问
+http://www.lch.com:3000/a.html
+http://vip.lch.com:3000/a.html
+http://svip.lch.com:3000/a.html
+
  window hots目录
  c:\windows\system32\drivers\etc
   访问的页面
-  http://a.abc.com:3000/a.html  http://b.abc.com:3000/b.html
+  http://svip.lch.com:3000/a.html  http://b.abc.com:3000/b.html
+
+ document.domain  只适合二级域名
+ qq.com 一级域名   vip.qq.com  music.qq.com 二级域名
+```
+```
+ 1. 流程 a 页面引入b页面
+ <iframe src="http://svip.lch.com:4000/b.html" frameborder="0" onload="load()" id="frame"></iframe>
+ 2. b页面设置全局变量和一级域名
+    document.domain = "lch.com";
+    window.a = "你好";
+ 3. a页面设置一级域名并且在iframe 加载完成之后调用load方法通过frame.contentWindow.a拿到b页面的全局变量
+    document.domain = "lch.com"
+    function load() {
+        console.log(frame.contentWindow.a);
+    }
 ```
 
-7. websoket
+7. websoket   双工协议
 
 ```
 前端 一般用socket.io进行兼容

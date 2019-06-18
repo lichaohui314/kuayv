@@ -2,30 +2,32 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>cors跨域</title>
 </head>
 
 <body>
-    cors跨域请求
+    cors跨域请求页面
     <script>
         let xhr = new XMLHttpRequest();
-        xhr.open("put", "http://localhost:3001/cors", true);
-        // 设置请求头
-        xhr.setRequestHeader("name", "lll");
-        xhr.send();
+        xhr.open("put", "http://localhost:3000/cors1", true);
+        //设置请求头
+        xhr.setRequestHeader("name", "ry");
         document.cookie = "user=1234";
-        xhr.withCredentials = true;
+        xhr.withCredentials = true; //携带cookie
+        xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                console.log(xhr.status)
+                console.log(xhr.status);
                 if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-                    console.log(xhr.response)
+                    //获取响应头
+                    console.log(xhr.getResponseHeader("Access-Control-Allow-Methods"));
+                    console.log(xhr.response);
                 }
             }
-        }
+        };
     </script>
 </body>
 
