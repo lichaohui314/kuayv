@@ -190,6 +190,22 @@ vue-cli 2.0
      }
 ```
 
-9. nginx 反向代理
+9. node 中间层代理
+```
+  服务端访问服务端不存在跨域
+  接口端服务器代码(axios在node里面也可以使用)
+  app.get("/nodecors", function (req, res) {
+    res.send("1234");
+  });
 
-10. node 中间件代理
+  客户端代码  客户端在客户端的服务器里面用axios请求接口服务器
+
+  app.get("/a", async function (req, res) {
+    let data = await axios.get("http://localhost:3000/nodecors");
+    let resulet = data.data;
+    res.json(resulet);
+  })
+```
+
+10. nginx 反向代理
+
