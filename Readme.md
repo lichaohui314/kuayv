@@ -208,4 +208,12 @@ vue-cli 2.0
 ```
 
 10. nginx 反向代理
+找到nginx.conf
+http 里面server表示虚拟服务器
 
+- server
+  listen  80  监听端口号
+  server_name 虚拟服务器的名字
+- nginx 命令
+  nginx -s reload 重启服务器
+  nginx -s quit   退出服务器
