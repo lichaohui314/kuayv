@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C页面</title>
+</head>
+
+<body>
+    这是c页面
+    <script>
+        // 动态创建ifame
+        let frame = document.createElement("iframe");
+        // src指向b页面  并且传入hash值
+        frame.src = "http://localhost:3000/b.html#niyehao";
+        document.body.appendChild(frame);
+    </script>
+</body>
+
+</html>
